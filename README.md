@@ -7,9 +7,11 @@ This Project implements and advances [Image Style Transfer Using Convolutional N
 ## Proposed Architecture and Workflow
 
 ![Example Image](images/Architecture.png)
+
 Our Proposed Arctitecture utilizes a pre-trained CNN (VGG-19) with it's original caffe weights as the model for processing Neural Style Transfer, which involved extracting low level image features and optimizing them on Content, Style and TV Losses. Then the model is pruned using fine-grained and loss is computed for it again and optimized for generating stylized image. At the end, the pruned model is fine-tuned for recovering any loss in perception quality.
 
 ## Sensitivity Analysis
+
 For finding the best sparsity ratio for each convolution layer in the VGG-19 network, we employed a sensitivity scan for 6 sparsity levels (40% to 90% with steo size of 10%) for 500 iterations each which resulted in 48,000 iterations total and resulted in some intersting insights.
 It was observed that the early layers were more sensitive to pruning as compared to denser layers and thus, the sparsity level was set accordingly. The following image shows a visual depiction of the analysis:
 
@@ -23,3 +25,7 @@ Sample Sensitivity Curves For Conv.10 Layer
 ## Sample Input/Outputs
 
 ![Example Image](images/Outputs.png)
+
+## How to run this project?
+Simply Download the repository on your local machine and install all packages listed in requirements.txt file. For Using the VGG-19 model, run the models-download.sh (bash) script and it will download the models on your machine. After it's set up, just run the Jupyter Notebook and specify content and style images as input path and feel free to play with the hyper-parameters.
+Enjoy :)
